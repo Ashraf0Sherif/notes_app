@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'alert_dialog.dart';
 
 class NoteItem extends StatelessWidget {
   const NoteItem({super.key});
@@ -33,7 +36,14 @@ class NoteItem extends StatelessWidget {
               ),
             ),
             trailing: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                showCupertinoDialog(
+                  context: context,
+                  builder: (context) {
+                    return ConfirmDialog();
+                  },
+                );
+              },
               icon: Icon(
                 Icons.delete,
                 color: Colors.black,
