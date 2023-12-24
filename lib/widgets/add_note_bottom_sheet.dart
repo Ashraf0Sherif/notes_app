@@ -68,14 +68,10 @@ class _AddNoteFormState extends State<AddNoteForm> {
                   onTap: () async {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
-                      var notesBox = Hive.box(kNotesBox);
                       print("$title $content");
-                    }
-                    else{
+                    } else {
                       autovalidateMode = AutovalidateMode.always;
-                      setState(() {
-
-                      });
+                      setState(() {});
                     }
                   }),
             ],
