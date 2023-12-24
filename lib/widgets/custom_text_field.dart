@@ -8,7 +8,8 @@ class CustomTextField extends StatelessWidget {
   final TextInputType? textInputType;
   final int? maxLines;
   final int? minLines;
-
+  final String? Function(String?)? validator;
+  final Function(String?)? onSaved;
   const CustomTextField(
       {super.key,
       required this.hintText,
@@ -16,11 +17,19 @@ class CustomTextField extends StatelessWidget {
       this.textInputType,
       this.obScureText = false,
       this.minLines = 1,
-      this.maxLines = 1});
+      this.maxLines = 1,
+      this.validator, this.onSaved});
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      onSaved: onSaved,
+      validator: (value){
+        if(value?.isEmpty ?? true){
+          return "Field is required";
+        }
+        return null;
+      },
       cursorColor: kPrimaryColor,
       minLines: minLines,
       maxLines: maxLines,
