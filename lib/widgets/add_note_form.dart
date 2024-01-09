@@ -18,7 +18,7 @@ class AddNoteForm extends StatefulWidget {
 class _AddNoteFormState extends State<AddNoteForm> {
   final GlobalKey<FormState> _formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-  String? title, content;
+  String? title, subTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
               minLines: 5,
               maxLines: 5,
               onSaved: (content) {
-                this.content = content;
+                subTitle = content;
               },
             ),
             const SizedBox(
@@ -61,7 +61,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
                   _formKey.currentState!.save();
                   var noteModel = NoteModel(
                     title: title!,
-                    subTitle: content!,
+                    subTitle: subTitle!,
                     date: DateTime.now().toString(),
                     color: Colors.blue.value,
                   );
