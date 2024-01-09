@@ -8,6 +8,7 @@ part 'add_note_state.dart';
 
 class AddNoteCubit extends Cubit<AddNoteState> {
   AddNoteCubit() : super(AddNoteInitial());
+
   addNote(NoteModel note) async {
     emit(AddNoteLoading());
     try {
@@ -17,5 +18,12 @@ class AddNoteCubit extends Cubit<AddNoteState> {
     } catch (e) {
       emit(AddNoteFailure(e.toString()));
     }
+  }
+
+  @override
+  void onChange(Change<AddNoteState> change) {
+    // TODO: implement onChange
+    super.onChange(change);
+    print(change);
   }
 }

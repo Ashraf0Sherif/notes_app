@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'custom_button.dart';
 import 'custom_text_field.dart';
 
@@ -54,16 +53,17 @@ class _AddNoteFormState extends State<AddNoteForm> {
                 height: 25,
               ),
               CustomButton(
-                  label: "Add",
-                  onTap: () async {
-                    if (_formKey.currentState!.validate()) {
-                      _formKey.currentState!.save();
-                      print("$title $content");
-                    } else {
-                      autovalidateMode = AutovalidateMode.always;
-                      setState(() {});
-                    }
-                  }),
+                label: "Add",
+                onTap: () async {
+                  if (_formKey.currentState!.validate()) {
+                    _formKey.currentState!.save();
+                    //BlocProvider.of<AddNoteCubit>(context).addNote(NoteModel(title: title!, subTitle: content!, date: date, color: color))
+                  } else {
+                    autovalidateMode = AutovalidateMode.always;
+                    setState(() {});
+                  }
+                },
+              ),
             ],
           ),
         ),

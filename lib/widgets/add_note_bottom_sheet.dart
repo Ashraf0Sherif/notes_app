@@ -25,8 +25,9 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
       },
       builder: (context, state) {
         return ModalProgressHUD(
-            inAsyncCall: state is AddNoteLoading ? true : false,
-            child: const AddNoteForm());
+          inAsyncCall: state is AddNoteLoading ? true : false,
+          child: const AddNoteForm(),
+        );
       },
     );
   }
