@@ -18,4 +18,9 @@ class NoteModel extends HiveObject {
   final String date;
   @HiveField(3)
   final int color;
+  @override
+  String toString() {
+    // TODO: implement toString
+    return title;
+  }
 }
