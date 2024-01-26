@@ -27,7 +27,7 @@ class _NotesViewBodyState extends State<NotesViewBody> {
         if (notes.isEmpty) {
           return const EmptyNotesScreen();
         } else {
-          return const NotesScreen();
+          return NotesScreen();
         }
       },
     );

@@ -10,6 +10,7 @@ class CustomTextField extends StatelessWidget {
   final int? minLines;
   final String? Function(String?)? validator;
   final Function(String?)? onSaved;
+  final String? initialValue;
   const CustomTextField(
       {super.key,
       required this.hintText,
@@ -18,11 +19,12 @@ class CustomTextField extends StatelessWidget {
       this.obScureText = false,
       this.minLines = 1,
       this.maxLines = 1,
-      this.validator, this.onSaved});
+      this.validator, this.onSaved, this.initialValue=""});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: initialValue,
       onSaved: onSaved,
       validator: (value){
         if(value?.isEmpty ?? true){
