@@ -31,7 +31,12 @@ class _AddNoteFormState extends State<AddNoteForm> {
         key: _formKey,
         autovalidateMode: autovalidateMode,
         child: ListView(
+          shrinkWrap: true,
+          scrollDirection: Axis.vertical,
           children: [
+            const SizedBox(
+              height: 20,
+            ),
             CustomTextField(
               hintText: "Title",
               onChanged: (data) {},

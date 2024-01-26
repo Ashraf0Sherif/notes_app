@@ -1,27 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../constants.dart';
+import '../cubits/add_note_cubit/add_note_cubit.dart';
 
 class ColorItem extends StatelessWidget {
-  const ColorItem({super.key, required this.index, required this.clicked});
+  const ColorItem({super.key, required this.color, required this.clicked});
 
-  final int index;
+  final Color color;
   final bool clicked;
-  final List<Color> colors = const [
-    Color(0xff1E1E24),
-    Color(0xffFB9F89),
-    Color(0xffC4AF9A),
-    Color(0xff81AE9D),
-    Color(0xff21A179),
-    Color(0xff2176FF),
-    Color(0xff33A1FD),
-    Color(0xff33A1FD),
-    Color(0xffFDCA40),
-    Color(0xffF79824),
-  ];
 
   @override
   Widget build(BuildContext context) {
     CircleAvatar colorItem = CircleAvatar(
-      backgroundColor: colors[index],
+      backgroundColor: color,
       radius: 23,
     );
     return Padding(
@@ -39,14 +31,12 @@ class ColorItem extends StatelessWidget {
 
 class ColorsListView extends StatefulWidget {
   const ColorsListView({super.key});
-
   @override
   State<ColorsListView> createState() => _ColorsListViewState();
 }
 
 class _ColorsListViewState extends State<ColorsListView> {
   int tappedIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -58,15 +48,17 @@ class _ColorsListViewState extends State<ColorsListView> {
             onTap: () {
               setState(() {
                 tappedIndex = index;
+                BlocProvider.of<AddNoteCubit>(context).noteColor =
+                    kColors[index];
               });
             },
             child: ColorItem(
-              index: index,
+              color: kColors[index],
               clicked: tappedIndex == index,
             ),
           );
         },
-        itemCount: 9,
+        itemCount: kColors.length,
       ),
     );
   }
