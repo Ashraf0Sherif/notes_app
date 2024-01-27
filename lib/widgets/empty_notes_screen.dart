@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+
 class EmptyNotesScreen extends StatelessWidget {
-  const EmptyNotesScreen({super.key});
+  const EmptyNotesScreen({super.key, required this.search});
+
+  final bool search;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +17,10 @@ class EmptyNotesScreen extends StatelessWidget {
             "assets/images/searching-data.png",
             width: 240,
           ),
-          const Text("Add some notes",style: TextStyle(fontSize: 17),),
+          Text(
+            search ? "There is no such a note" : "Add some notes",
+            style: const TextStyle(fontSize: 17),
+          ),
           const Spacer(
             flex: 2,
           )
